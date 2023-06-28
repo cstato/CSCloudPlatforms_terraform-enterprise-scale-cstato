@@ -1,96 +1,64 @@
-# Configure the custom landing zones to deploy in
-# addition to the core resource hierarchy
+/*
+Description: If specified, will deploy additional Management Groups
+alongside Enterprise-scale core Management Groups.
+Type: any
+Default: {}
+*/
 locals {
   custom_landing_zones = {
-
-    "${var.root_id}-eu-hub" = {
-      display_name               = "EU HUB"
+    /*
+    Can be commented on if the display name "Landing Zones" should be unnamed.
+    */
+    "${var.root_id}-landing-zones" = {
+      display_name               = "Landing Zones"
       parent_management_group_id = "${var.root_id}"
       subscription_ids           = []
       archetype_config = {
-        archetype_id   = "fcs-internal"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "${var.root_id}-eu-restricted" = {
-      display_name               = "${upper(var.root_id)} EU Restricted"
-      parent_management_group_id = "${var.root_id}-eu-hub"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "fcs-internal"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "${var.root_id}-eu-online" = {
-      display_name               = "${upper(var.root_id)} EU Online"
-      parent_management_group_id = "${var.root_id}-eu-hub"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "fcs_online"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "${var.root_id}-eu-customer-apps" = {
-      display_name               = "${upper(var.root_id)} EU Customer Apps"
-      parent_management_group_id = "${var.root_id}-eu-hub"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "customer_apps"
+        archetype_id   = "landing_zones"
         parameters     = {}
         access_control = {}
       }
     }
 
-    "${var.root_id}-eu-hub-management" = {
-      display_name               = "${upper(var.root_id)} EU Hub Management"
-      parent_management_group_id = "${var.root_id}-eu-hub"
+    "${var.root_id}-landing-zones-corp" = {
+      display_name               = "Corp"
+      parent_management_group_id = "${var.root_id}-landing-zones"
       subscription_ids           = []
       archetype_config = {
-        archetype_id   = "hub_management"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "${var.root_id}-global-restricted" = {
-      display_name               = "${upper(var.root_id)} Global Restricted"
-      parent_management_group_id = "${var.root_id}-global-hub"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "fcs-internal"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "${var.root_id}-global-online" = {
-      display_name               = "${upper(var.root_id)} Global Online"
-      parent_management_group_id = "${var.root_id}-global-hub"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "fcs_online"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-    "${var.root_id}-global-customer-apps" = {
-      display_name               = "${upper(var.root_id)} Global Customer Apps"
-      parent_management_group_id = "${var.root_id}-global-hub"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "customer_apps"
+        archetype_id   = "corp"
         parameters     = {}
         access_control = {}
       }
     }
 
-    "${var.root_id}-global-hub-management" = {
-      display_name               = "${upper(var.root_id)} Global Hub Management"
-      parent_management_group_id = "${var.root_id}-global-hub"
+    "${var.root_id}-landing-zones-online" = {
+      display_name               = "Online"
+      parent_management_group_id = "${var.root_id}-landing-zones"
       subscription_ids           = []
       archetype_config = {
-        archetype_id   = "hub_management"
+        archetype_id   = "online"
+        parameters     = {}
+        access_control = {}
+      }
+    }
+
+    "${var.root_id}-landing-zones-corp-prd" = {
+      display_name               = "App Landing Zone Prd"
+      parent_management_group_id = "${var.root_id}-landing-zones-corp"
+      subscription_ids           = []
+      archetype_config = {
+        archetype_id   = "empty"
+        parameters     = {}
+        access_control = {}
+      }
+    }
+
+    "${var.root_id}-landing-zones-corp-dev" = {
+      display_name               = "App Landing Zone Dev"
+      parent_management_group_id = "${var.root_id}-landing-zones-corp"
+      subscription_ids           = [var.appLandingZone01_subscription_id, var.appLandingZone02_subscription_id]
+      archetype_config = {
+        archetype_id   = "empty"
         parameters     = {}
         access_control = {}
       }
