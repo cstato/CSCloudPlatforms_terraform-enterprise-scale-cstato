@@ -6,20 +6,6 @@ Default: {}
 */
 locals {
   custom_landing_zones = {
-    /*
-    Can be commented on if the display name "Landing Zones" should be unnamed.
-    */
-    "${var.root_id}-landing-zones" = {
-      display_name               = "Landing Zones"
-      parent_management_group_id = "${var.root_id}"
-      subscription_ids           = []
-      archetype_config = {
-        archetype_id   = "landing_zones"
-        parameters     = {}
-        access_control = {}
-      }
-    }
-
     "${var.root_id}-landing-zones-corp" = {
       display_name               = "Corp"
       parent_management_group_id = "${var.root_id}-landing-zones"
