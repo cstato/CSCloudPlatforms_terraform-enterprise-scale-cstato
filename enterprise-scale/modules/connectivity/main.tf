@@ -31,7 +31,7 @@ module "alz" {
   # and uncomment the remote `source` and `version` below.
   
   source  = "Azure/caf-enterprise-scale/azurerm"
-  version = "4.0" # change this to your desired version, https://www.terraform.io/language/expressions/version-constraints
+  version = "4.0.2" # change this to your desired version, https://www.terraform.io/language/expressions/version-constraints
 
   providers = {
     azurerm              = azurerm
