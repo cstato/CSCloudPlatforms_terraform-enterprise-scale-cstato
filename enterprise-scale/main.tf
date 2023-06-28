@@ -39,7 +39,7 @@ module "management" {
   primary_location           = var.primary_location
   root_id                    = var.root_id
   subscription_id_management = local.subscription_id_management
-  management_resources_location = "westeurope"
+  management_resources_location = var.primary_location
 }
 
 module "core" {
