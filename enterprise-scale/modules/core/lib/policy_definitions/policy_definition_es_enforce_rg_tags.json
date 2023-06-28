@@ -1,0 +1,167 @@
+{
+    "name": "Enforce-RG-Tags",
+    "type": "Microsoft.Authorization/policyDefinitions",
+    "apiVersion": "2021-06-01",
+    "scope": null,
+      "properties": {
+        "displayName": "Resource groups must have mandatory tagging applied",
+        "policyType": "Custom",
+        "mode": "All",
+        "description": "Enforce mandatory tags on Resource Groups",
+        "metadata": {
+          "version": "1.0.0",
+          "category": "Tags"
+        },
+        "policyRule": {
+        "if": {
+            "allOf":[
+                {            
+                "field": "type",
+                "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+                },
+                {
+                "anyof": [
+                {
+                    "field": "[concat('tags[', parameters('EnforceRGTags-BusinessUnit'), ']')]",
+                    "exists": "false"
+                },
+                {
+                    "field": "[concat('tags[', parameters('EnforceRGTags-CompanyAbbreviation'), ']')]",
+                    "exists": "false"
+                },
+                {
+                    "field": "[concat('tags[', parameters('EnforceRGTags-CostCenter'), ']')]",
+                    "exists": "false"
+                },
+                {
+                    "field": "[concat('tags[', parameters('EnforceRGTags-ServiceOwner'), ']')]",
+                    "exists": "false"
+                },
+                {
+                    "field": "[concat('tags[', parameters('EnforceRGTags-ServiceOwnerBackup'), ']')]",
+                    "exists": "false"
+                },
+                {
+                    "field": "[concat('tags[', parameters('EnforceRGTags-ApprovalReference'), ']')]",
+                    "exists": "false"
+                },
+                {
+                    "field": "[concat('tags[', parameters('EnforceRGTags-OperationalTeam'), ']')]",
+                    "exists": "false"
+                },
+                {
+                    "field": "[concat('tags[', parameters('EnforceRGTags-DataClassification'), ']')]",
+                    "exists": "false"
+                },
+                {
+                    "field": "[concat('tags[', parameters('EnforceRGTags-BusinessCriticality'), ']')]",
+                    "exists": "false"
+                },
+                {
+                    "field": "[concat('tags[', parameters('EnforceRGTags-Environment'), ']')]",
+                    "exists": "false"
+                },
+                {
+                    "field": "[concat('tags[', parameters('EnforceRGTags-ServiceNumber'), ']')]",
+                    "exists": "false"
+                },
+                {
+                    "field": "[concat('tags[', parameters('EnforceRGTags-ServiceName'), ']')]",
+                    "exists": "false"
+                }
+                ]
+            }
+            ]
+        },
+        "then": {
+            "effect": "deny"
+        }
+        },
+        "parameters": {
+            "EnforceRGTags-BusinessUnit": {
+                "type": "String",
+                "metadata": {
+                  "displayName": "BusinessUnit",
+                  "description": "Specifies the BusinessUnit of the Resource Group"
+                }
+            },
+            "EnforceRGTags-CompanyAbbreviation": {
+                "type": "String",
+                "metadata": {
+                  "displayName": "CompanyAbbreviation",
+                  "description": "Specifies the Company Abbreviation of the Resource Group"
+                }
+            },
+            "EnforceRGTags-CostCenter": {
+              "type": "String",
+              "metadata": {
+                "displayName": "CostCenter",
+                "description": "Specifies the CostCenter of the Resource Group"
+              }
+            },
+            "EnforceRGTags-ServiceOwner": {
+                "type": "String",
+                "metadata": {
+                  "displayName": "ServiceOwner",
+                  "description": "Specifies the Service Owner of the Resource Group"
+                }
+            },
+            "EnforceRGTags-ServiceOwnerBackup": {
+              "type": "String",
+              "metadata": {
+                "displayName": "ServiceOwnerBackup",
+                "description": "Specifies the Backup Service Owner  of the Resource Group"
+              }
+            },
+            "EnforceRGTags-ApprovalReference": {
+                "type": "String",
+                "metadata": {
+                  "displayName": "ApprovalReference",
+                  "description": "Specifies the Approval Reference that the Resource Group"
+                }
+            },
+            "EnforceRGTags-OperationalTeam": {
+              "type": "String",
+              "metadata": {
+                "displayName": "OperationalTeam",
+                "description": "Specifies the Operational Team of the Resource Group"
+              }
+            },
+            "EnforceRGTags-DataClassification": {
+                "type": "String",
+                "metadata": {
+                  "displayName": "DataClassification",
+                  "description": "Specifies the Data Classification of the Resource Group"
+                }     
+            },       
+            "EnforceRGTags-BusinessCriticality": {
+                "type": "String",
+                "metadata": {
+                  "displayName": "BusinessCriticality",
+                  "description": "Specifies the Business Criticality of the Resource Group"
+                }
+            },
+            "EnforceRGTags-Environment": {
+                "type": "String",
+                "metadata": {
+                  "displayName": "Environment",
+                  "description": "Specifies the Environment of the Resource Group"
+                }
+            },
+            "EnforceRGTags-ServiceNumber": {
+              "type": "String",
+              "metadata": {
+                "displayName": "ServiceNumber",
+                "description": "Specifies the ServiceNumber of the Resource Group"
+              }
+            },
+            "EnforceRGTags-ServiceName": {
+                "type": "String",
+                "metadata": {
+                  "displayName": "ServiceName",
+                  "description": "Specifies the ServiceName of the Resource Group"
+                }
+            }
+        }
+    }
+}
