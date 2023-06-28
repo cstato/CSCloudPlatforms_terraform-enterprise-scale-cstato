@@ -30,7 +30,7 @@ module "alz" {
   # module locally. Please remove the local `source = "../../../../"`
   # and uncomment the remote `source` and `version` below.
   source  = "Azure/caf-enterprise-scale/azurerm"
-  version = "4.0" # change this to your desired version, https://www.terraform.io/language/expressions/version-constraints
+  version = "4.0.2" # change this to your desired version, https://www.terraform.io/language/expressions/version-constraints
 
   providers = {
     azurerm              = azurerm
@@ -41,7 +41,7 @@ module "alz" {
   # Base module configuration settings
   root_parent_id   = data.azurerm_client_config.current.tenant_id
   root_id          = var.root_id
-  default_location = var.primary_location
+  default_location = var.primary_locations
 
   # Disable creation of the core management group hierarchy
   # as this is being created by the core module instance
