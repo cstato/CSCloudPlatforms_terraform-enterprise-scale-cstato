@@ -56,7 +56,7 @@ locals {
     "${var.root_id}-landing-zones-corp-dev" = {
       display_name               = "App Landing Zone Dev"
       parent_management_group_id = "${var.root_id}-landing-zones-corp"
-      subscription_ids           = [var.appLandingZone01_subscription_id, var.appLandingZone02_subscription_id]
+      subscription_ids           = []
       archetype_config = {
         archetype_id   = "empty"
         parameters     = {}
