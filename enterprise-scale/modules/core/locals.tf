@@ -41,14 +41,15 @@ locals {
   Default: {}
   */
   archetype_config_overrides = {
-  Tamer = {
-    archetype_id = "es_platform"
-    parameters = {
-      Deny-Subnet-Without-Nsg = {
-        effect = "Audit"
+    Tamer = {
+      archetype_id = "es_platform"
+      parameters = {
+        Deny-Subnet-Without-Nsg = {
+          effect = "Audit"
+        }
       }
+      access_control = {}
     }
-    access_control = {}
   }
 
 
