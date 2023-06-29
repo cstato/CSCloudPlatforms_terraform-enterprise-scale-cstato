@@ -83,12 +83,14 @@ module "alz" {
     parameters = {
       Deny-Subnet-Without-Nsg = {
         effect = "Audit"
+      },
+      Deny-MgmtPorts-Internet = {
+        effect = "Audit"
       }
+
     }
     access_control = {}
   }
 }
-
-
-
+  
 }
