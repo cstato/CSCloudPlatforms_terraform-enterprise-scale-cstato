@@ -72,5 +72,11 @@ module "alz" {
   deploy_management_resources    = false
   configure_management_resources = var.configure_management_resources
   subscription_id_management     = var.subscription_id_management
+
+
+  # Description: If specified, will set custom Archetype configurations for the core
+  # ALZ Management Groups. Does not work for management groups specified by the
+  # 'custom_landing_zones' input variable.
+  archetype_config_overrides = local.archetype_config_overrides
   
 }
