@@ -18,21 +18,3 @@ terraform {
 provider "azurerm" { 
   features {}  
 }
-
-provider "azurerm" {
-  alias = "connectivity"
-  features {}
-  subscription_id = var.subscription_id_connectivity
-}
-
-provider "azurerm" {
-  alias = "management"
-  features {}
-  subscription_id = var.subscription_id_management
-}
-
-provider "azurerm" {
-  alias = "identity"
-  features {}
-  subscription_id = var.subscription_id_identity
-}
