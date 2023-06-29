@@ -32,8 +32,8 @@ module "alz" {
 
   providers = {
     azurerm              = azurerm
-    azurerm.connectivity = azurerm.connectivity
-    azurerm.management   = azurerm.management
+    azurerm.connectivity = azurerm
+    azurerm.management   = azurerm
   }
 
   # Base module configuration settings
