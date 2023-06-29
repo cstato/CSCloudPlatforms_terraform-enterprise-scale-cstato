@@ -1,4 +1,3 @@
-/*
 resource "azurerm_resource_group" "example" {
   name     = "TEST-RG"
   location = "West Europe"
@@ -25,4 +24,3 @@ resource "azurerm_virtual_network" "example" {
     environment = "Production"
   }
 }
-*/
