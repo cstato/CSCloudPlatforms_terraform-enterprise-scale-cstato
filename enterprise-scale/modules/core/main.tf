@@ -78,14 +78,17 @@ module "alz" {
   # ALZ Management Groups. Does not work for management groups specified by the
   # 'custom_landing_zones' input variable.
   archetype_config_overrides = {
-    landing_zones = {
-      archetype_id = "es_landing_zones"
-      parameters = {
-        Deny-Subnet-Without-Nsg = {
-          effect = "Audit"
-        }
+  landing-zones = {
+    archetype_id = "es_landing_zones"
+    parameters = {
+      Deny-Subnet-Without-Nsg = {
+        effect = "Audit"
       }
-      access_control = {}
     }
+    access_control = {}
   }
+}
+
+
+
 }
