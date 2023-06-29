@@ -77,6 +77,6 @@ module "alz" {
   # Description: If specified, will set custom Archetype configurations for the core
   # ALZ Management Groups. Does not work for management groups specified by the
   # 'custom_landing_zones' input variable.
-  #archetype_config_overrides = local.archetype_config_overrides
+  # archetype_config_overrides = local.archetype_config_overrides
   
 }

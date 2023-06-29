@@ -39,7 +39,7 @@ locals {
   'custom_landing_zones' input variable.
   Type: any
   Default: {}
-  */
+ 
   archetype_config_overrides = {
   platform = {
     archetype_id = "es_platform"
@@ -50,8 +50,35 @@ locals {
     }
     access_control = {}
   }
-}
 
+  archetype_config_overrides = {
+    es_root = {
+      archetype_id   = "es_root"
+      parameters     = {
+        ES-Allowed-Locations = {
+          "listOfAllowedLocations": [
+              "westeurope",
+              "northeurope"
+            ]
+        }
+        ES-Allowed-RSG-Locations = {
+          "listOfAllowedLocations": [
+              "westeurope",
+              "northeurope",
+              "uksouth",
+              "ukwest"
+            ]
+        }
+        ES-Deploy-ASC-Monitoring = {
+          "networkSecurityGroupsOnSubnetsMonitoringEffect" = "Disabled"
+          "sqlDbEncryptionMonitoringEffect" = "AuditIfNotExists"
+        }
+      }
+      access_control = {}
+    }
+  }
+}
+ */
   /*
   Description: If specified, will set the default tags for all resources deployed
   by this module where supported.
